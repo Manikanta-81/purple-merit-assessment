@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./config/db");
 
@@ -18,12 +18,13 @@ app.use(express.json());
 const driverRoutes= require("./routes/driverRoutes");
 const routeRoutes=require("./routes/routeRoutes");
 const orderRoutes=require("./routes/orderRoutes");
-
+const authRoutes=require("./routes/authRoutes");
 
 //Routes
 app.use('/api/drivers', driverRoutes);
 app.use('/api/routes', routeRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/auth', authRoutes);
 
 // Simple test route
 app.get("/", (req, res) => {
