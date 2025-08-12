@@ -10,8 +10,17 @@ connectDB();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use(express.json());
 
+
+//Import Route file
+const driverRoutes= require("./routes/driverRoutes");
+
+
+//Routes
+app.use('/api/drivers', driverRoutes);
+  
 // Simple test route
 app.get("/", (req, res) => {
   res.send("Server is working 🚀");
