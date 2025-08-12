@@ -1,11 +1,15 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const connectDB = require("./config/db");
+
+connectDB();
 
 // Middleware
-app.use(cors()); // <-- make sure to call it as a function
+app.use(cors());
 app.use(bodyParser.json());
 
 // Simple test route
