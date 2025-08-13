@@ -9,8 +9,10 @@ const {
   deleteDriver,
 } = require("../controllers/driverController");
 
+const { protect, isManager } = require('../middleware/authMiddleware');
+
 // Routes for the collection endpoint: /api/drivers
-router.get("/", getAllDrivers);
+router.get("/", protect, isManager, getAllDrivers);
 router.post("/", createDriver);
 
 // Routes for a single document endpoint: /api/drivers/:id
